@@ -39,8 +39,8 @@ class EasyLogin{
     	if($this->check($opts)!='ok')return $this->check($opts);
     	//check post
     	if (isset($_POST["usr"]) && isset($_POST["pwd"])) {
-    		$usr=$_POST["usr"];
-    		$pwd=$_POST["pwd"];
+    		$usr=(string)$_POST["usr"];
+    		$pwd=(string)$_POST["pwd"];
     		if(array_key_exists($usr, $opts['usr_pwd']) && $pwd == md5($opts['usr_pwd'][$usr])){
     			setcookie($opts['id_entry'],$opts['id_entry'], time() + 3600 * $opts['duration']);
     			echo 'Approved';
